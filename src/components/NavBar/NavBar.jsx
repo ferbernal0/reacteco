@@ -5,29 +5,22 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 
 function NavBar() {
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar style={{ background: 'black' }} expand="xxl" variant="dark">
             <Container>
-            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
+                <Navbar.Brand href="#" style={{ color: 'white', fontSize: '1.5rem' }}>MASA PADRE</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                <Nav.Link href="#features">Features</Nav.Link>
-                <Nav.Link href="#pricing">Pricing</Nav.Link>
-                <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                    <NavDropdown.Item href="#action/3.1">Ropa Hombre</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">Ropa Mujer</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">Ropa Niños</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                </NavDropdown>
+                    <Nav.Link href="#" style={{ color: 'white', fontSize: '1.25rem' }}>Panes de MM</Nav.Link>
+                    <Nav.Link href="#" style={{ color: 'white', fontSize: '1.25rem' }}>Panes Integrales</Nav.Link>
+                    <Nav.Link href="#" style={{ color: 'white', fontSize: '1.25rem' }}>Panes Blancos</Nav.Link>
+                    <NavDropdown title="Merchandasing" id="basic-nav-dropdown">
+                        <NavDropdown.Item href="#action/3.1">Remeras</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.2">Buzos</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.3">Gorras</NavDropdown.Item>
+                    </NavDropdown>
                 </Nav>
-                <Nav>
-                <Nav.Link href="#deets">More deets</Nav.Link>
-                <Nav.Link eventKey={2} href="#memes">
-                    Dank memes
-                </Nav.Link>
-                </Nav>
-            </Navbar.Collapse>
+                </Navbar.Collapse>
             </Container>
         </Navbar>
     )
