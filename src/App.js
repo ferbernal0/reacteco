@@ -6,9 +6,9 @@ function App() {
   return (
     <div className="App">
       <NavBar/>
-      <ItemListContainer name="Hola" />
+      <ItemListContainer name="Panes a la venta"/>
     </div>
-  );
+  )
 }
 
 export default App;

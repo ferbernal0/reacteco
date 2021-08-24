@@ -8,7 +8,7 @@ function NavBar() {
         <Navbar style={{ background: 'black' }} expand="lg" variant="dark">
             <Container>
                 <Navbar.Brand href="#" style={{ color: 'darkcyan', fontSize: '1.75rem' }}>MASA PADRE</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href="#" style={{ color: 'white', fontSize: '1.25rem' }}>Panes de MM</Nav.Link>

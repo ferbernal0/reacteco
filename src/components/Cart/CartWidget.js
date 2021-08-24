@@ -8,7 +8,7 @@ const Carrito = () => {
                 <img src={cart} alt="logo" width="40"></img>
             </a>
         </Nav.Link>
-   );
+    )
 }
 
 export default Carrito;
