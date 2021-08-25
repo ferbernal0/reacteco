@@ -2,19 +2,19 @@ import {useState} from 'react';
 import ItemCount from './ItemCount';
 
 const CountContainer = ({initial, stock, product_name}) => {
-    const [count,setCount] = useState(initial);
+    const [count, setCount] = useState(initial);
     const add = () => {
         if (count+1>stock) {
-            alert("Superaste la cantidad de items en stock"); }
-        else{
-            setCount(count+1); } }
-    const sub =() => {
-        if (count === 0) {
-            alert("Debes agregar al menos un item al carrito"); }
+            alert ("Superaste la cantidad de items en stock"); }
         else {
-            setCount(count-1); } }
+            setCount (count+1); } }
+    const sub = () => {
+        if (count === 1) {
+            alert ("Debes agregar al menos un item al carrito"); }
+        else {
+            setCount (count-1); } }
     const onAdd = () => {
-        alert(`Agregaste ${count} al carrito`); }
+        alert (`Agregaste ${count} al carrito`); }
 
     return (
         <>
