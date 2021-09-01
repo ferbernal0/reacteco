@@ -1,15 +1,23 @@
-import ItemCount from './CountContainer';
+import {useState} from 'react';
+import ItemList from './ItemList';
+import jsonpack from './data.json';
 
 const ItemListContainer = ({name}) => {
+   const [item,setItems] = useState ([])
+   const call = new Promise ((resolve) => {
+      setTimeout (() => {resolve(jsonpack)},2000)
+   } )
+   call.then (response => {
+      setItems(response)
+   } )
    return (
-       <div name="test">
-         <div class="p-3 mb-2">
+      <div name="test">
+         <div class="p-3 mb-2 bg-dark text-white">
          {name}
-            <ItemCount product_name='Panes MM' stock={5} initial={1}/>
-            <ItemCount product_name='Panes Blancos' stock={9} initial={1}/>
+            <ItemList items={item}/>
          </div>
       </div>
-   )
+  )
 }
 
 export default ItemListContainer;
