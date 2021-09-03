@@ -13,7 +13,7 @@ const ItemDetail = ({jsonpack}) => {
           <Card.Body>
             <Card.Title>{jsonpack.title}</Card.Title>
             <Card.Subtitle className="mb-2">Precio: ${jsonpack.price}</Card.Subtitle>
-            <Card.Text>Cantidad: {jsonpack.available_quantity}<p></p></Card.Text>
+            <Card.Text className="mb-2">Cantidad: {jsonpack.available_quantity}<p></p></Card.Text>
           </Card.Body>
         </Card>
       </div>
