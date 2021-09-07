@@ -14,7 +14,7 @@ const CountContainer = ({initial, stock, product_name}) => {
         else {
             setCount (count-1); } }
     const onAdd = () => {
-        alert (`Agregaste ${count} ${product_name} al carrito`); }
+        alert (`Agregaste ${count} "${product_name}" al carrito`); }
 
     return (
         <>
