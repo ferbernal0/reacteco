@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
@@ -9,7 +10,10 @@ function NavBar() {
     return (
         <Navbar style={{ background: 'black' }} expand="lg" variant="dark">
             <Container>
-                <Navbar.Brand href="#" style={{ color: 'darkcyan', fontSize: '1.75rem' }}>MASA PADRE</Navbar.Brand>
+                <Navbar.Brand href="#index.html" style={{ color: 'darkcyan', fontSize: '1.75rem' }}>
+                    <Link to={`/`}></Link>
+                    MASA PADRE
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
