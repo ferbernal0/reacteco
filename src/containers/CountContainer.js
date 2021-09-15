@@ -13,12 +13,10 @@ const CountContainer = ({initial, stock, product_name}) => {
             alert ("Debes agregar al menos un item al carrito"); }
         else {
             setCount (count-1); } }
-    const onAdd = () => {
-        alert (`Agregaste ${count} "${product_name}" al carrito`); }
 
     return (
         <>
-            <ItemCount min={sub} max={add} onAdd={onAdd} count={count} product_name={product_name}/>
+            <ItemCount min={sub} max={add} count={count} product_name={product_name}/>
         </>
     )
 }

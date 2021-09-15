@@ -1,4 +1,4 @@
-import ItemDetail from './ItemDetail';
+import {ItemDetail} from './ItemDetail';
 import {useParams} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import productos from './data.json';
