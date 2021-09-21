@@ -1,16 +1,39 @@
-import ItemList from './ItemList';
-import jsonpack from './data.json';
-import {useParams} from 'react-router-dom';
-import {useState} from 'react';
+import ItemList from './ItemList'
+import {useParams} from "react-router-dom"
+import {useState, useEffect} from 'react'
+import {getFirestore} from '../firebase/index'
 
 const ItemListContainer = ({name}) => {
-    const {categoryid} = useParams ()
-    const {cat} = useState (categoryid)
-    const [item, setItems] = useState ([])
-    const call = new Promise ((resolve) => {
-        setTimeout (() => {resolve (jsonpack)}, 2000)})
-        call.then (response => {setItems (response)})
-        console.log (cat)
+    const {categoryid} = useParams()
+    const [cat] = useState(categoryid)
+    const [item, setItems] = useState([])
+    useEffect (() => {
+        const db = getFirestore()
+        const itemCollection = db.collection("items")
+        console.log ("categoryid en ItemListContainer" + categoryid)
+        if (categoryid) {
+            const highprice = db.collection("items").where('categoryid','==',categoryid)
+            highprice.get().then((querySnapshot) => {
+                if (querySnapshot.sise===0) {
+                    console.log ("No results!")
+                }
+                setItems(querySnapshot.docs.map(doc=>doc.data()))
+            }).catch((error) => {
+                console.log ("Error searching items",error)
+            }).finally(()=>{})
+        }
+        else {
+            itemCollection.get().then((querySnapshot) => {
+                if(querySnapshot.sise===0) {
+                    console.log ("No results!")
+                }
+                setItems(querySnapshot.docs.map(doc=>doc.data()))
+            }).catch((error)=>{
+            console.log ("Error searching items",error)
+            }).finally(()=>{})
+        }
+    })
+    console.log (cat)
     return (
         <div name="test">
             <div class="p-3 mb-2 bg-dark text-white">
@@ -21,4 +44,4 @@ const ItemListContainer = ({name}) => {
     )
 }
 
-export default ItemListContainer
+export default ItemListContainer;

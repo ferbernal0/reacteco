@@ -10,7 +10,7 @@ const ItemCount = ({product_name, initial, itemprice, min, max}) => {
   const {itemid} = useParams()
   const {additem, carts, cartlength} = useContext(CartContext)
   console.log ("ver contenido de carts",carts.map(cart=>cart.productname))
-  console.log("New cartlength function",cartlength())
+  console.log ("New cartlength function",cartlength())
   return (
     <ButtonGroup aria-label="Basic example">
       <Table striped bordered hover variant="dark" size="sm" align="center" >
