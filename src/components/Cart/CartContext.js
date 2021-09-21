@@ -1,48 +1,55 @@
-import {createContext} from 'react';
+import {createContext, useState} from 'react'
 
-export const CartContext = createContext ({})
+export const CartContext = createContext({})
 export const CartProvider = ({children}) => {
-    let cart = []
-    const  additem = ({itemid}, {count}) => {
-        if (!cart) {
-            cart.push ({itemid,count})
+    const [carts,setCarts] = useState([])
+    const additem = ({productname}, {itemid}, {count}, {itemprice}) => {
+        setCarts([...carts,{productname, itemid, count, itemprice}])
+    }
+    const removeitem = ({itemid}) => {
+        console.log ("inside removeitemid" + itemid)
+        setCarts (carts.filter (cart=>cart.itemid!==itemid))
+    }
+    const cartlength = () => {
+        let sum,i
+        sum=0
+        i=0
+        if (carts.length) {
+            while (i<carts.length) {
+                sum = carts[i].count+sum
+                i++
+            }
+            return sum
         }
         else {
-            if (isInCart ({itemid})) {
-                cart[isInCartIndex({itemid})].count = cart[isInCartIndex({itemid})].count + count
-                cart=cart
-                }
-            else {
-                cart.push ({itemid, count})
-                cart=cart
-                }
+            return 0
         }
-        console.log ("Contenido de cart en context mas abajo")
-        console.log (cart)
-        console.log ("Largo de cart:"+cart.length)
     }
-
-    const removeItem = ({itemid}) => {
-        let cart2=[]
-        let i=0
-        while (i<cart.length) {
-            if (cart[i].itemid!==itemid) {
-                cart2.push (cart[i])
-            }
-            i=i+1;
-        }
-        cart=cart2
-    }
-
     const clear = () => {
-        cart = []
+        setCarts ([])
     }
-
+    const total = () => {
+        let sum,i
+        sum=0
+        i=0
+        if (carts.length) {
+            while (i<carts.length) {
+                sum = carts[i].count*carts[i].itemprice+sum
+                i++
+            }
+            return sum
+        }
+        else {
+            return 0
+        }
+    }
     const isInCart = ({itemid}) => {
         let i=0
-        if (cart.length) {
-            while (i<cart.length) {
-                if (cart[i].itemid===itemid)
+        if (!carts)
+        return false
+        if (carts.length) {
+            while(i<carts.length) {
+                if (carts[i].itemid===itemid)
                 return true
                 i++
             }
@@ -52,12 +59,11 @@ export const CartProvider = ({children}) => {
             return false
         }
     }
-
     const isInCartIndex = ({itemid}) => {
         let i=0
-        if (cart.length) {
-            while (i<cart.length) {
-                if (cart[i].itemid===itemid)
+        if (carts.length) {
+            while (i<carts.length) {
+                if(carts[i].itemid===itemid)
                 return i
                 i++
             }
@@ -67,10 +73,7 @@ export const CartProvider = ({children}) => {
             return false
         }
     }
-
-    return (
-        <CartContext.Provider value = {{cart,additem,removeItem,clear,isInCart,isInCartIndex}}>
-            {children}
-        </CartContext.Provider>
-    )
+    return <CartContext.Provider value={{carts,additem,removeitem,cartlength,clear,total,isInCartIndex}}>
+        {children}
+    </CartContext.Provider>
 }
