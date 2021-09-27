@@ -1,18 +1,41 @@
+import {getFirestore} from '../../firebase'
 import Badge from 'react-bootstrap/Badge'
 import Table from 'react-bootstrap/Table'
-import {useContext} from 'react'
+import Button from 'react-bootstrap/Button'
+import {useState, useEffect, useContext} from 'react'
 import {CartContext} from './CartContext'
 import {Link} from "react-router-dom"
 import DelButton from "./DelButton"
+import firebase from 'firebase/app'
+import '@firebase/firestore'
 
 const Cart = () => {
-  const {carts, cartlength, total} = useContext (CartContext)
-  console.log ("En carrito largo de carrito:" + cartlength())
+  const {carts,cartlength,total}=useContext(CartContext)
+  const [order,setOrder]=useState()
+  const [setOrderid]=useState()
+  const [setError]=useState()
+  const [email,setEmail]=useState()
+  const [phone,setPhone]=useState()
+  const [name,setName]=useState()
+  function onPhoneChange(evt) {
+    setPhone(evt.target.value) }
+  function onNameChange(evt) {
+    setName(evt.target.value) }
+  function onEmailChange(evt) {
+    setEmail(evt.target.value) }
+  let goodarray=[]
+  let copyarray=[]
+  let ListTemplate
+  let i=0
+  useEffect (()=>{
+    setOrder ({
+    buyer:{name,phone,email},
+    items:goodarray,
+    date:firebase.firestore.Timestamp.fromDate(new Date()),
+    total:total()
+    })
+  },[email])
   if (cartlength()>0) {
-    let copyarray=[]
-    let goodarray=[]
-    let ListTemplate
-    let i=0
     let itemidarray=[]
     while (i<carts.length) {
       copyarray[i]=carts[i]
@@ -26,52 +49,66 @@ const Cart = () => {
     let price
     let name
     while (i<itemidarray.length) {
-      let sum = 0;
-      for (j = 0;j<copyarray.length;j++) {
-        if(copyarray[j].itemid===itemidarray[i]) {
-          sum = copyarray[j].count+sum
-          price = copyarray[j].itemprice
-          name = copyarray[j].productname
+      let cantidad=0
+      for (j=0;j<copyarray.length;j++) {
+        if (copyarray[j].itemid===itemidarray[i]) {
+          cantidad=copyarray[j].count+cantidad
+          price=copyarray[j].itemprice
+          name=copyarray[j].productname
         }
       }
-      id = itemidarray[i]
-      goodarray.push ({id,name,sum,price})
+      id=itemidarray[i]
+      goodarray.push ({id,name,cantidad,price})
       i++
     }
-    ListTemplate = goodarray.map((element) => (
-      <tr key={element.id}>
-        <td>{element.name}</td>
-        <td>{element.sum}</td>
-        <td>{element.price}</td>
-        <td><DelButton itemid={id}/></td>
-      </tr>
-    ))
+    const InsertOrder = ({goodarray}) => {
+      console.log ('Inside InsertOrder function'+order)
+      const db = getFirestore()
+      const orderDb = db.collection('orders')
+      orderDb.add(order).then(({id}) => {
+        setOrderid(id)
+      }).catch(err=>{setError(err)}).finally(()=>{})
+      alert("Enhorabuena su pedido ha sido ingresado, correo de confirmación sera enviado a la brevedad")
+    }
+    ListTemplate=goodarray.map((element)=>(<tr key={element.id}><td>{element.name}</td><td>{element.cantidad}</td><td>{element.price}</td><td><DelButton itemid={id}/></td></tr>))
+    console.log ("goodarray:"+goodarray[0].id)
     return (
-      <Table striped bordered hover variant='dark'>
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Cantidad</th>
-            <th>Precio Unitario</th>
-            <th>Quitar Item</th>
-          </tr>
-        </thead>
-        <tbody>
-          {ListTemplate}
-          <tr>
-            <td>Total a Pagar: </td>
-            <td colSpan='1'></td>
-            <td colSpan='1'></td>
-            <td>{total()}</td>
-          </tr>
-        </tbody>
-      </Table>
+      <>
+        <Table striped bordered hover variant='dark'>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Cantidad</th>
+              <th>Precio Unitario</th>
+              <th>Quitar Item</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ListTemplate}
+            <tr>
+              <td>Total a Pagar:</td>
+              <td colSpan='1'></td>
+              <td colSpan='1'></td>
+              <td>{total()}</td>
+            </tr>
+          </tbody>
+        </Table>
+        <div id='test5'  align='center'>
+          <label label style={{ color: 'white' }}>Ingresa nombre para procesar tu compra:</label><br/>
+          <input type = 'text' name = 'name'    onChange={evt => onNameChange(evt)} ></input><br/>
+          <label label style={{ color: 'white' }}>Ingresa Fono para procesar tu compra:</label><br/>
+          <input type = 'text' name = 'phone'    onChange={evt => onPhoneChange(evt)} ></input><br/>
+          <label label style={{ color: 'white' }}>Ingresa correo para finalizar Compra:</label><br/>
+          <input type = 'text' name = 'email'    onChange={evt => onEmailChange(evt)} ></input><br/><br/>
+          <Button type='submit' variant='outline-secondary'    disabled={!(name !== "" && phone !== "" && email !== "")}  onClick={()=>InsertOrder({goodarray})}>Finalizar tu Compra</Button>
+        </div>
+      </>
     )
   }
   else {
-    return(
-      <Badge variant="secondary">Su carro se encuentra vacio, por favor escoger items
-        <Link to={'/categories'}>
+    return (
+      <Badge variant='secondary'>Vuestro Carro se encuentra vacio por favor escoger items
+        <Link  to={'/categories'}>
           <button>Volver</button>
         </Link>
       </Badge>
@@ -79,4 +116,4 @@ const Cart = () => {
   }
 }
 
-export default Cart;
+export default Cart
