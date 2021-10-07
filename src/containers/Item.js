@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 
   const Item = ({jsonpack}) => {
     const itemid = jsonpack.id
-    console.log(itemid)
 
     return(
       <>
