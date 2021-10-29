@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom"
 import {useState, useEffect} from 'react'
 import {getFirestore} from '../firebase'
 
-const ItemListContainer = ({name}) => {
+function ItemListContainer ({name}) {
     const {categoryid}=useParams()
     const [item, setItem]=useState([])
     useEffect(()=>{

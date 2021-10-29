@@ -51,9 +51,11 @@ const ItemDetailContainer = ({id}) => {
     }
     else {
         return (
-            <div class="p-3 mb-2 bg-dark text-white">
-                <h1>El itemid ingresado no existe por favor ingresar un itemid que exista</h1>
-            </div>
+            <>
+                <div class="p-3 mb-2 bg-dark text-white">
+                    <h1>El itemid ingresado no existe por favor ingresar un itemid que exista</h1>
+                </div>
+            </>
         )
     }
 }

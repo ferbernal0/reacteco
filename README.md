@@ -4,7 +4,7 @@ Este es un proyecto que usa ReactJs para visualizar una tienda de panes. Los dat
 # Requerimientos
 
 Instalar Firebase:
-npm install firebase@7.16.1
+npm install firebase
 
 Router-dom se puede instalar con la siguiente:
 npm install react-router-dom

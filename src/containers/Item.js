@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
   const Item = ({jsonpack}) => {
     const itemid = jsonpack.id
 
-    return(
+    return (
       <>
         <Card border="light" bg="dark" style={{ width: '25rem' }} className="mb-2">
           <Card.Header>
@@ -18,6 +18,6 @@ import {Link} from 'react-router-dom';
         </Card>
       </>
     )
-}
+  }
 
 export default Item
