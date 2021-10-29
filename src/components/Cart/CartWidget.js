@@ -9,9 +9,9 @@ export const Carrito = () => {
     console.log ("Valor de total en widget")
     console.log ("Loading Cartwidget")
     return (
-        <Nav.Link href='#'>Cantidad de items en carrito: {cartlength}
+        <Nav.Link href='#'>Carrito: {cartlength}
             <Link to={'/cart'}>
-                <img src={cart} alt="logo" width="40"></img>
+                <img src={cart} alt="logo" width="35"></img>
             </Link>
         </Nav.Link>
     )
