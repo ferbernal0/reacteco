@@ -39,14 +39,16 @@ const ItemDetailContainer = ({id}) => {
                 setFlag(true);
             })
         }
-    },[itemid])
+    },[itemid, id, item])
     if (item.length)
     console.log("items en item container:"+item[0].title)
     if (flag) {
         return (
-            <div class="p-3 mb-2 bg-dark text-white">
-                <ItemDetail jsonpack={item[0]}/>
-            </div>
+            <>
+                <div class="p-3 mb-2 bg-dark text-white">
+                    <ItemDetail jsonpack={item[0]}/>
+                </div>
+            </>
         )
     }
     else {

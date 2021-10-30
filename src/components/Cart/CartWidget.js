@@ -11,7 +11,7 @@ export const Carrito = () => {
     return (
         <Nav.Link href='#'>Carrito: {cartlength}
             <Link to={'/cart'}>
-                <img src={cart} alt="logo" width="35"></img>
+                <img src={cart} alt="logo" width="40"></img>
             </Link>
         </Nav.Link>
     )

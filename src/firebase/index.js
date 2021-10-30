@@ -2,13 +2,13 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 
 const app = firebase.initializeApp ({
-    apiKey: "AIzaSyBD9yYQKawOFZuTMRK9G8VdHG4nQ7-AlyU",
-    authDomain: "reacteco-75396.firebaseapp.com",
-    projectId: "reacteco-75396",
-    storageBucket: "reacteco-75396.appspot.com",
-    messagingSenderId: "51182770123",
-    appId: "1:51182770123:web:dd688d9ee57f835158484e",
-    measurementId: "G-K1J7BFMGCH"
+    apiKey: "AIzaSyDSyCDsIY21KxhpSMafdC1HO-5INiOQEns",
+    authDomain: "ecoreact.firebaseapp.com",
+    projectId: "ecoreact",
+    storageBucket: "ecoreact.appspot.com",
+    messagingSenderId: "434249916383",
+    appId: "1:434249916383:web:16487095c19792223e6e6a",
+    measurementId: "G-ZCFJW5P3RT"
 })
 export function getFirebase(){
     return app
