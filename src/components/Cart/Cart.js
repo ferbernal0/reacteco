@@ -10,10 +10,10 @@ import firebase from 'firebase/app'
 import '@firebase/firestore'
 
 const Cart = () => {
-  const {carts, cartlength, total}=useContext(CartContext)
+  const {carts, cartlength, clear, total, removeitem}=useContext(CartContext)
   const [order, setOrder]=useState()
   const [orderid,setOrderid]=useState();
-  const [setError]=useState()
+  const [error, setError]=useState()
   const [email, setEmail]=useState()
   const [email2,setEmail2]=useState("");
   const [phone, setPhone]=useState()
