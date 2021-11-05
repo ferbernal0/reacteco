@@ -1,8 +1,8 @@
 import React from "react";
-import CartWidget from "./CartWidget";
+import CartWidget from "../Cart/CartWidget";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useCartContext } from "../context/cartContext";
+import { useCartContext } from "./CartContext";
 
 const NavBar = (props) => {
   const { count } = props;
@@ -11,7 +11,7 @@ const NavBar = (props) => {
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="/">Tecno-Commerce</Navbar.Brand>
+          <Navbar.Brand href="/">FB-Tecno</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">

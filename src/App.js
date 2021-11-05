@@ -1,11 +1,11 @@
 import { createContext } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 import Contacto from "./components/Form";
 import ItemsListContainer from "./components/ItemsListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import Cart from "./components/Cart";
-import CartContextProvider from "./context/cartContext.js";
+import CartContextProvider from "./components/CartContext.js";
 
 export const ContextApp = createContext("");
 

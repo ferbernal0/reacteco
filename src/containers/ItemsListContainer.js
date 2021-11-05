@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ItemList from "./ItemList";
 import { Text } from "@nextui-org/react";
-import { getFirestore } from "../services/getFirebase";
+import { getFirestore } from "../firebase";
 
 const ItemsListContainer = ({ greeting }) => {
   const [productos, setProductos] = useState([]);
@@ -46,7 +46,7 @@ const ItemsListContainer = ({ greeting }) => {
     <div>
       <div className="form-header">
         <Text color="primary" h1>
-          {"Bienvenidos a Tecno-Commerce"}
+          {"Bienvenidos a FB-Tecno"}
         </Text>
       </div>
       <ItemList productos={productos} />

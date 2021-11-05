@@ -1,14 +1,14 @@
 import "firebase/firestore";
 
 import React, { useState } from "react";
-import { cartItem, useCartContext } from "../context/cartContext";
+import { cartItem, useCartContext } from "./CartContext";
 
 import { Card } from "react-bootstrap";
-import Firestore from "../services/getFirebase";
+import Firestore from "../firebase";
 import { Text } from "@nextui-org/react";
-import deleteFromCart from "../context/cartContext";
+import deleteFromCart from "./CartContext";
 import firebase from "firebase";
-import { getFirestore } from "../services/getFirebase";
+import { getFirestore } from "../firebase";
 
 const Cart = () => {
   const [formData, setFormData] = useState({

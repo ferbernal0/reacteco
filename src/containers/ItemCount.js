@@ -5,7 +5,7 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import React from "react";
 
-import cartContext from "../context/cartContext";
+import cartContext from "./CartContext";
 
 const ItemCount = ({ stock, initial, item }) => {
   const [count, setCount] = useState(initial);
@@ -20,7 +20,7 @@ const ItemCount = ({ stock, initial, item }) => {
   const lessProduct = () => {
     setCount(count - 1);
   };
-  const addItem = (count) => {
+  const addItem = (item, count) => {
     console.log("item en addItem", item);
     console.log("count en addItem", count);
     setCount(count);
