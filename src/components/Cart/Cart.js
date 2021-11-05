@@ -1,14 +1,12 @@
 import "firebase/firestore";
-
 import React, { useState } from "react";
 import { cartItem, useCartContext } from "./CartContext";
-
 import { Card } from "react-bootstrap";
-import Firestore from "../firebase";
+import Firestore from "../../firebase";
 import { Text } from "@nextui-org/react";
 import deleteFromCart from "./CartContext";
 import firebase from "firebase";
-import { getFirestore } from "../firebase";
+import { getFirestore } from "../../firebase";
 
 const Cart = () => {
   const [formData, setFormData] = useState({
@@ -17,9 +15,6 @@ const Cart = () => {
     email: "",
   });
   const { cartList, totalPrice } = useCartContext();
-  // const id = cartList.map((item) => item.id);
-  // const nombre = cartList.map((item) => item.nombre);
-  // const price = cartList.map((item) => item.price);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -70,7 +65,6 @@ const Cart = () => {
       value={formData.email}
     />
   </form>;
-  // const ordersCollection = db.collection("orders");
   function handleOnChange(e) {
     setFormData({
       ...formData,

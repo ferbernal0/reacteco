@@ -2,7 +2,7 @@ import React from "react";
 import CartWidget from "../Cart/CartWidget";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useCartContext } from "./CartContext";
+import { useCartContext } from "../Cart/CartContext";
 
 const NavBar = (props) => {
   const { count } = props;
@@ -29,7 +29,6 @@ const NavBar = (props) => {
               <Nav.Link href="/contacto">Contacto</Nav.Link>
             </Nav>
           </Navbar.Collapse>
-
           <Link to="/cart">
             {iconCart}
             <CartWidget count={count} />

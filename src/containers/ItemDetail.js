@@ -1,5 +1,4 @@
 import { Card, Col, Container, Row } from "react-bootstrap";
-
 import ItemCount from "./ItemCount";
 import React from "react";
 import { Text } from "@nextui-org/react";
@@ -28,7 +27,6 @@ const ItemDetail = ({ item }) => {
             </Card>
           </Col>
         </Row>
-        ​
         <Col>
           <ItemCount stock={5} initial={1} item={item} />
         </Col>

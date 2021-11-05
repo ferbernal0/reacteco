@@ -4,12 +4,8 @@ export const useCartContext = () => useContext(cartContext);
 
 export default function CartContextProvider({ children }) {
   const [cartList, setCartList] = useState([]);
-  // function addToCart(item) {
-  //   setCartList(...cartList, item);
-  // }
 
   const addToCart = (itemnvo, count) => {
-    //traigo las dos variables que mande desde itemcount
     console.log("itemnvo", itemnvo);
     console.log("cantidad", count);
     let previousCart = [...cartList];
@@ -58,7 +54,6 @@ export default function CartContextProvider({ children }) {
       {children}
     </cartContext.Provider>
   );
-  //FUNCION PARA CONCRETAR ORDEN DE COMPRA
 }
 
 export const cartItem = (item) => {

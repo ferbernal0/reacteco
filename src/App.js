@@ -2,21 +2,17 @@ import { createContext } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import Contacto from "./components/Form";
-import ItemsListContainer from "./components/ItemsListContainer";
-import ItemDetailContainer from "./components/ItemDetailContainer";
-import Cart from "./components/Cart";
-import CartContextProvider from "./components/CartContext.js";
+import ItemsListContainer from "./containers/ItemsListContainer";
+import ItemDetailContainer from "./containers/ItemDetailContainer";
+import Cart from "./components/Cart/Cart";
+import CartContextProvider from "./components/Cart/CartContext";
 
 export const ContextApp = createContext("");
 
 function App() {
-  // function setearStatte(item) {
-  //   setState(item);
-  // }
 
   return (
     <CartContextProvider>
-      {/* <CreateContext.Provider value={{ state, setearStatte }}> */}
       <BrowserRouter>
         <>
           <NavBar />
@@ -37,7 +33,6 @@ function App() {
           </Switch>
         </>
       </BrowserRouter>
-      {/* </CreateContext.Provider> */}
     </CartContextProvider>
   );
 }

@@ -1,11 +1,9 @@
 import { Button, Text } from "@nextui-org/react";
 import { useContext, useState } from "react";
-
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import React from "react";
-
-import cartContext from "./CartContext";
+import cartContext from "../components/Cart/CartContext";
 
 const ItemCount = ({ stock, initial, item }) => {
   const [count, setCount] = useState(initial);
@@ -42,7 +40,6 @@ const ItemCount = ({ stock, initial, item }) => {
             <p>{count > stock ? "No hay stock" : ""}</p>
             <p>{count < 1 ? "La cantidad minima es 1" : ""}</p>
           </Card.Text>
-          ​
           {cambiarBoton ? (
             <div>
               <Button shadow color="primary" auto onClick={addProduct}>
@@ -51,7 +48,6 @@ const ItemCount = ({ stock, initial, item }) => {
               <Button shadow color="primary" auto onClick={lessProduct}>
                 <Text h4>-</Text>
               </Button>
-              ​
               <Button light color="success" auto onClick={() => addItem(count)}>
                 <Text h5>{"Agregar al carrito"}</Text>
               </Button>
@@ -63,7 +59,6 @@ const ItemCount = ({ stock, initial, item }) => {
                   Terminar Compra
                 </Button>
               </Link>
-
               <Link to={"/"}>
                 <Button light color="warning" auto>
                   Seguir comprando

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import ItemDetail from "./ItemDetail";
 import React from "react";
 import { getFirestore } from "../firebase";
@@ -9,7 +8,6 @@ const ItemDetailContainer = () => {
 
   const { id } = useParams();
 
-  //Firestore
   const getProducto = (id) => {
     const dbKey = getFirestore();
     const itemCollection = dbKey.collection("items");
