@@ -9,4 +9,6 @@ npm install firebase
 Router-dom se puede instalar con la siguiente:
 npm install react-router-dom
 
+npm install @nextui-org/react
+
 Una vez instalados los paquetes señalados anteriormente el projecto deberían poder ejecutarse.
